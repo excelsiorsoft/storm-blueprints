@@ -1,5 +1,7 @@
 package storm.blueprints.chapter1.v4;
 
+import org.apache.log4j.Logger;
+
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
 import backtype.storm.topology.TopologyBuilder;
@@ -14,6 +16,8 @@ public class WordCountTopology {
     private static final String REPORT_BOLT_ID = "report-bolt";
     private static final String TOPOLOGY_NAME = "word-count-topology";
 
+    //private static Logger logger = Logger.getLogger(WordCountTopology.class);
+    
     public static void main(String[] args) throws Exception {
 
         SentenceSpout spout = new SentenceSpout();
@@ -38,7 +42,8 @@ public class WordCountTopology {
 
         Config config = new Config();
         config.setNumWorkers(2);
-
+        config.put(Config.TOPOLOGY_DEBUG, false);
+        
         LocalCluster cluster = new LocalCluster();
 
         cluster.submitTopology(TOPOLOGY_NAME, config, builder.createTopology());
