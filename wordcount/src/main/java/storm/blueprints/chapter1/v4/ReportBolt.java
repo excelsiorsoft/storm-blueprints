@@ -1,16 +1,16 @@
 package storm.blueprints.chapter1.v4;
 
-import storm.blueprints.chapter1.v1.*;
-import backtype.storm.task.OutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.topology.base.BaseRichBolt;
-import backtype.storm.tuple.Tuple;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import backtype.storm.task.OutputCollector;
+import backtype.storm.task.TopologyContext;
+import backtype.storm.topology.OutputFieldsDeclarer;
+import backtype.storm.topology.base.BaseRichBolt;
+import backtype.storm.tuple.Tuple;
 
 public class ReportBolt extends BaseRichBolt {
 
@@ -36,13 +36,17 @@ public class ReportBolt extends BaseRichBolt {
 
     @Override
     public void cleanup() {
-        System.out.println("--- FINAL COUNTS ---");
-        List<String> keys = new ArrayList<String>();
+        
+    	System.out.println("--- FINAL COUNTS ---");
+        
+    	List<String> keys = new ArrayList<String>();
         keys.addAll(this.counts.keySet());
         Collections.sort(keys);
+        
         for (String key : keys) {
             System.out.println(key + " : " + this.counts.get(key));
         }
+        
         System.out.println("--------------");
     }
 }
