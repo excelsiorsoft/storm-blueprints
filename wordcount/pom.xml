@@ -37,6 +37,13 @@
 			<!-- keep storm dependencies out of the shaded jar -->
 			<!-- <scope>provided</scope> -->
 		</dependency>
+		
+		<!-- TODO: Looks like storm has http client of its own - investigate -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.4.1</version>
+		</dependency>
 
 		<!-- <dependency>
 			<groupId>org.slf4j</groupId>
